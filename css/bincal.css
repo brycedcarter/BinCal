@@ -1,0 +1,11 @@
+body {
+  margin-top: 100px;
+}
+
+.vertical-container
+{
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 2px;
+  padding-right: 2px;
+}
