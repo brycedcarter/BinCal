@@ -3,15 +3,17 @@
  */
 import { Component } from '@angular/core';
 import { BinDecHexInput } from './app.binDecHexInput'
+import { BinDisplay } from './app.binDisplay'
+import { MyNumber } from './number'
+import {NumericDisplay} from "./app.numericDisplay";
+
 
 @Component({
     selector: 'input-section',
-    template:`
-    <bin-dec-hex-input></bin-dec-hex-input>
-    <bin-dec-hex-display></bin-dec-hex-display> 
-    `,
-    directives: [BinDecHexInput]
+    templateUrl: 'app/app.inputSection.html',
+    directives: [BinDecHexInput, BinDisplay, NumericDisplay]
 })
 export class InputSection {
-
+    inputNumber: MyNumber = new MyNumber(100);
+    invalidInput: Boolean = false;
 }

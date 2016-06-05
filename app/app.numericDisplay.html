@@ -1,0 +1,8 @@
+<div class="input-group" [ngClass]="setClasses('input-div')">
+    <span class="input-group-addon" [ngClass]="setClasses('text')">{{displayMode.slice(0,3).toUpperCase()}}</span>
+    <input [value]="(displayMode=='decimal') ? number.decString : number.hexString" type="text" class="form-control"
+           placeholder="Decimal Value" aria-describedby="..." readonly>
+            <span class="input-group-btn">
+          <button [ngClass]="setClasses('button')" class="btn btn-default" type="button">Copy</button>
+        </span>
+</div>

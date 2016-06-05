@@ -6,6 +6,6 @@ import { bootstrap }    from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app.component';
 import { InputSection } from './app.inputSection'
 
-bootstrap(AppComponent);
+// bootstrap(AppComponent);
 bootstrap(InputSection);
 
