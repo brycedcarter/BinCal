@@ -9,8 +9,10 @@ export class MyNumber
     bitWidth: number = 32;
     byteWidth: number = 4;
     private _value: number = 0;
+    binString: string = '';
     hexString: string = '';
     decString: string = '';
+    twosString: string = '';
     bitArray: number[] = [];
     byteArray: number[][] = [];
     invalidValue: Boolean = false;
@@ -22,8 +24,6 @@ export class MyNumber
 
     set value(value: number|string)
     {
-        console.log('here too');
-        console.log(value);
         if(typeof value === 'number')
         {
             this._value = value;
@@ -42,6 +42,31 @@ export class MyNumber
             {
                 this._value = parseInt(value.replace('0B', ''), 2);
                 if ('0B'.concat(this._value.toString(2).toUpperCase()) != value.toUpperCase())
+                {
+                    this._value = NaN
+                }
+            }
+            else if (value.toUpperCase().substr(0,2) == '0T')
+            {
+                if (value.match(/^0T-/))
+                {
+                    var tmpBitString = parseInt(value.replace('0T-', ''), 10).toString(2)
+                    var tmpBitArray = Array(this.bitWidth+1-tmpBitString.length).join('0').concat(tmpBitString).split('').map(Number);
+                    if (tmpBitArray[0] == 1)
+                    {
+                        this._value = NaN;
+                    }
+                    else
+                    {
+                        tmpBitArray = tmpBitArray.map(function (x) {return 1-x});
+                        this._value = (parseInt(tmpBitArray.map(String).join(''),2)+1);
+                    }
+                }
+                else
+                {
+                    this._value = parseInt(value.replace('0T', ''), 10);
+                }
+                if ('0T'.concat((-(~this._value+1)).toString(10)) != value.toUpperCase())
                 {
                     this._value = NaN
                 }
@@ -66,13 +91,17 @@ export class MyNumber
         {
             this.hexString = this._value.toString(16).toUpperCase();
             this.decString = this._value.toString(10);
+            this.twosString = (-(~this._value+1)).toString(10);
             var tmpBitString = this._value.toString(2);
             this.bitArray = Array(this.bitWidth+1-tmpBitString.length).join('0').concat(tmpBitString).split('').map(Number);
+            this.binString = this.bitArray.join('').replace(/^0*/,'');
         }
         else
         {
             this.hexString = 'INVALID';
             this.decString = 'INVALID';
+            this.twosString = 'INVALID';
+            this.binString = 'INVALID';
             this.bitArray = Array(this.bitWidth+1).join('0').split('').map(Number);
         }
         this.byteArray = [];

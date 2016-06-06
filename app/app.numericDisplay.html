@@ -1,8 +1,9 @@
 <div class="input-group" [ngClass]="setClasses('input-div')">
     <span class="input-group-addon" [ngClass]="setClasses('text')">{{displayMode.slice(0,3).toUpperCase()}}</span>
-    <input [value]="(displayMode=='decimal') ? number.decString : number.hexString" type="text" class="form-control"
-           placeholder="Decimal Value" aria-describedby="..." readonly>
-            <span class="input-group-btn">
-          <button [ngClass]="setClasses('button')" class="btn btn-default" type="button">Copy</button>
-        </span>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group">
+            <span class="input-group-btn" style="width: 100%"><button class="btn btn-block btn-primary" style="width: 100%">{{getValue()}}</button></span>
+            <span class="input-group-btn hidden-xs"><button [clipboard]="getValue()" [ngClass]="setClasses('button')" class="btn btn-default" type="button">Copy</button></span>
+        </div>
+    </div>
 </div>

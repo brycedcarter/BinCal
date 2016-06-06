@@ -4,10 +4,12 @@
 
 import { Component, Input } from '@angular/core';
 import {MyNumber} from "./number";
+import {ClipboardDirective} from './clipboardDirective'
 
 @Component({
     selector: 'bin-display',
-    templateUrl: 'app/app.binDisplay.html'
+    templateUrl: 'app/app.binDisplay.html',
+    directives: [ClipboardDirective]
 })
 export class BinDisplay {
     @Input()
@@ -20,8 +22,8 @@ export class BinDisplay {
         {
             case 'button':
                 classes['btn-danger'] = this.number.invalidValue;
+                classes['btn-primary'] = !this.number.invalidValue;
                 break;
-
         }
         return classes
     }

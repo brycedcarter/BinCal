@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
+import {MyNumber} from "./number";
+import {InputSection} from "./app.inputSection";
 @Component({
-    selector: 'my-app',
-    template: '<h1>My First Angular 2 App</h1>'
+    selector: 'bincal-app',
+    templateUrl: 'app/app.component.html',
+    directives: [InputSection]
 })
-export class AppComponent { }
+export class AppComponent
+{
+    inputNumber: MyNumber = new MyNumber(0);
+}

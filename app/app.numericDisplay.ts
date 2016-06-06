@@ -4,12 +4,13 @@
 
 import {Component, Input} from '@angular/core';
 import {MyNumber} from "./number";
-import {NumberType} from "./types";
+import {ClipboardDirective} from './clipboardDirective'
 
 @Component({
     selector: 'numeric-display',
     inputs: ['number', 'displayMode'],
-    templateUrl: 'app/app.numericDisplay.html'
+    templateUrl: 'app/app.numericDisplay.html',
+    directives: [ClipboardDirective]
 })
 export class NumericDisplay
 {
@@ -34,5 +35,18 @@ export class NumericDisplay
                 break;
         }
         return classes
+    }
+
+    getValue()
+    {
+        switch (this.displayMode)
+        {
+            case 'decimal':
+                return this.number.decString;
+            case 'hexadecimal':
+                return this.number.hexString;
+            case 'twos':
+                return this.number.twosString;
+        }
     }
 }

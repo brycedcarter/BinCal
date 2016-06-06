@@ -14,3 +14,15 @@ body {
 {
   color: #00AA00;
 }
+
+.padded-group
+{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.padded-group-tight
+{
+  margin-top: 10px;
+  margin-bottom: 1  0px;
+}

@@ -10,10 +10,11 @@ import {NumericDisplay} from "./app.numericDisplay";
 
 @Component({
     selector: 'input-section',
+    inputs: ['inputNumber'],
     templateUrl: 'app/app.inputSection.html',
     directives: [BinDecHexInput, BinDisplay, NumericDisplay]
 })
 export class InputSection {
-    inputNumber: MyNumber = new MyNumber(100);
+    inputNumber: MyNumber;
     invalidInput: Boolean = false;
 }

@@ -18,20 +18,21 @@ export class BinDecHexInput {
     {
         value = value ? value : '';
         var tmpValue = '0';
-        if (this.currentMode == 'binary')
+        switch (this.currentMode)
         {
-             tmpValue = '0B'.concat(value.replace(/^(0{0,1}[b,B]){0,1}0*/, ""));
+            case 'binary':
+                tmpValue = '0B'.concat(value.replace(/^(0{0,1}[b,B]){0,1}0*/, ""));
+                break;
+            case 'decimal':
+                tmpValue  = value.replace(/^0*/, '');
+                break;
+            case 'hexadecimal':
+                tmpValue = '0X'.concat(value.replace(/^(0{0,1}[x,X]){0,1}0*/, ""));
+                break;
+            case 'twos':
+                tmpValue = '0T'.concat(value.replace(/^(0{0,1}[t,T]){0,1}0*/, ""));
+                break;
         }
-        else if (this.currentMode == 'decimal')
-        {
-            tmpValue  = value.replace(/^0*/, '');
-        }
-        else if (this.currentMode == 'hexadecimal')
-        {
-            tmpValue = '0X'.concat(value.replace(/^(0{0,1}[x,X]){0,1}0*/, ""));
-        }
-        console.log(tmpValue);
-        console.log('here');
         this.inputNumber.value = (/^(((0B|0X)0*)|(0+))$/.test(tmpValue) || (tmpValue=='')) ? 0 : tmpValue;
         this._currentValue = value;
     }
@@ -52,6 +53,10 @@ export class BinDecHexInput {
             case 'button-hexadecimal':
                 classes['btn-primary'] = this.currentMode == 'hexadecimal';
                 classes['btn-default'] = this.currentMode != 'hexadecimal';
+                break;
+            case 'button-twos':
+                classes['btn-primary'] = this.currentMode == 'twos';
+                classes['btn-default'] = this.currentMode != 'twos';
                 break;
 
         }

@@ -2,18 +2,21 @@
     <div class="input-group">
         <span class="input-group-addon" id="sizing-addon1">BIN</span>
         <div class="row vertical-container">
-            <div *ngFor="let byte of number.byteArray" class="col-md-3">
+            <div *ngFor="let byte of number.byteArray; let i = index" class="col-md-3">
                 <div class="vertical-container">
+
                     <div class="btn-group btn-group-justified btn-group-xs" role="group" aria-label="...">
                         <div *ngFor="let bit of byte" class="btn-group btn-group-xs">
                             <button [ngClass]="setClasses('button')" [class.active]="bit" type="button" class="btn btn-default">{{bit}}</button>
                         </div>
                     </div>
+                    <div>
+                        <span class="label label-default" style="float: left">{{number.bitWidth-(i*8)-1}}</span>
+                        <span class="label label-default" style="float: right">{{number.bitWidth-((i+1)*8)}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-        <span class="input-group-btn"><button [ngClass]="setClasses('button')" class="btn btn-default" type="button">Copy</button></span>
+        <span class="input-group-btn"><button [clipboard]="number.binString" [ngClass]="setClasses('button')" class="btn btn-default" type="button">Copy</button></span>
     </div>
 </div>
