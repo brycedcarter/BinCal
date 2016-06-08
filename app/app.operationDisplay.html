@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5 style="text-align: center">
+            <!--<span class="label label-success"-->
+                  <!--*ngIf="operationDisplay!=undefined"></span>-->
+            <a class="label label-success" data-toggle="collapse" [attr.href]="('#'+operationDisplayId)">{{displayOperation.name}}</a>
+        </h5>
+    </div>
+    <div class="panel-collapse collapse" [attr.id]="operationDisplayId">
+        <div class="panel-body">
+            Placeholder!
+        </div>
+    </div>
+</div>

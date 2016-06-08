@@ -1,13 +1,9 @@
-<bin-dec-hex-input [inputNumber]="inputNumber"></bin-dec-hex-input>
-<bin-display [number]="inputNumber"></bin-display>
-<div class="padded-group-tight">
-    <div class="col-sm-4">
-        <numeric-display [number]="inputNumber" [displayMode]="'decimal'"></numeric-display>
-    </div>
-    <div class="col-sm-4">
-        <numeric-display [number]="inputNumber" [displayMode]="'hexadecimal'"></numeric-display>
-    </div>
-    <div class="col-sm-4">
-        <numeric-display [number]="inputNumber" [displayMode]="'twos'"></numeric-display>
+<div class="panel panel-primary">
+    <div class="panel-heading">Input</div>
+    <div class="panel-body">
+        <bin-dec-hex-input [inputNumber]="inputNumber"></bin-dec-hex-input>
     </div>
 </div>
+
+<full-number-display [displayNumber]="inputNumber">
+</full-number-display>

@@ -1,9 +1,10 @@
 import {tmpdir} from "os";
+import {CalculationElement} from "./calculationElements";
 /**
  * Created by brycedcarter on 6/4/16.
  */
 
-export class MyNumber
+export class MyNumber extends CalculationElement
 {
     // TODO update error checking using bitwidth
     bitWidth: number = 32;
@@ -19,6 +20,7 @@ export class MyNumber
 
     constructor(value)
     {
+        super();
         this.value = value;
     }
 

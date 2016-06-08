@@ -9,9 +9,61 @@
     </input-section>
 
 <div class="row padded-group">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padded-group">
-		<button type="button" class="btn btn-info btn-lg btn-block">Load</button>
+	<div class="col-sm-6 col-md-3 col-lg-3 padded-group">
+		<button type="button" class="btn btn-info btn-lg btn-block" (click)="loadInputToReg(1)">Load to R1</button>
 	</div>
+    <div class="col-sm-6 col-md-3 col-lg-3 padded-group">
+        <button type="button" class="btn btn-info btn-lg btn-block" (click)="loadInputToReg(2)">Load to R2</button>
+    </div>
+    <div class="col-sm-6 col-md-3 col-lg-3 padded-group">
+        <button type="button" class="btn btn-info btn-lg btn-block" (click)="loadInputToReg(3)">Load to R3</button>
+    </div>
+    <div class="col-sm-6 col-md-3 col-lg-3 padded-group">
+        <button type="button" class="btn btn-info btn-lg btn-block" (click)="loadInputToReg(4)">Load to R4</button>
+    </div>
 </div>
+
+    <operation-selection-display [calculationElements]="calculationElements">
+
+    </operation-selection-display>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Calculation
+        </div>
+        <div class="panel-body">
+
+
+            <div class="col-xs-6">
+                <ul class="list-group" dnd-sortable-container [sortableData]="calculationElements">
+                <li *ngFor="let item of calculationElements; let i = index;" class="list-group-item" dnd-sortable [sortableIndex]="i">
+                    <div [ngSwitch]="item.elementType">
+                        <div *ngSwitchWhen="'register'">
+                            <full-number-display [displayNumber]="item.value" [displayRegister]="item"></full-number-display>
+                        </div>
+                        <div *ngSwitchWhen="'operation'">
+                            <operation-display [displayOperation]="item"></operation-display>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            </div>
+            <div class="col-xs-6">
+                <ul class="list-group" dnd-sortable-container [sortableData]="calculationElements">
+                    <li *ngFor="let item of calculationElements; let i = index;" class="list-group-item" dnd-sortable [sortableIndex]="i">
+                        <div [ngSwitch]="item.elementType">
+                            <div *ngSwitchWhen="'register'">
+                                <full-number-display [displayNumber]="item.value" [displayRegister]="item"></full-number-display>
+                            </div>
+                            <div *ngSwitchWhen="'operation'">
+                                <operation-display [displayOperation]="item"></operation-display>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
 
 </div>

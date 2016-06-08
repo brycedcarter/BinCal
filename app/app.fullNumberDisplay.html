@@ -1,0 +1,26 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5 style="text-align: center">
+            <span class="label label-info"
+                  *ngIf="displayRegister!=undefined">R{{displayRegister.registerIdNumber}}</span>
+            <a data-toggle="collapse" [attr.href]="('#'+numberDisplayId)">0x{{displayNumber.hexString}}</a>
+        </h5>
+    </div>
+    <div class="panel-collapse collapse" [attr.id]="numberDisplayId">
+        <div class="panel-body">
+            <div class="container-fluid"><bin-display [number]="displayNumber"></bin-display>
+            <div class="row"><div class="padded-group-tight">
+                <div class="col-sm-4">
+                    <numeric-display [number]="displayNumber" [displayMode]="'decimal'"></numeric-display>
+                </div>
+                <div class="col-sm-4">
+                    <numeric-display [number]="displayNumber" [displayMode]="'hexadecimal'"></numeric-display>
+                </div>
+                <div class="col-sm-4">
+                    <numeric-display [number]="displayNumber" [displayMode]="'twos'"></numeric-display>
+                </div></div>
+            </div></div>
+        </div>
+    </div>
+</div>

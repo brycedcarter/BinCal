@@ -24,5 +24,22 @@ body {
 .padded-group-tight
 {
   margin-top: 10px;
-  margin-bottom: 1  0px;
+  margin-bottom: 10px;
+}
+
+.dnd-sortable-drag
+{
+  border-style: dashed;
+  border: dashed;
+  margin-left: 50px;
+}
+
+full-number-display > div.panel-default
+{
+  margin-bottom: 0;
+}
+
+operation-display > div.panel-default
+{
+  margin-bottom: 0;
 }
